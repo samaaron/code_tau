@@ -27,6 +27,8 @@ code_tau-*.tar
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
+/priv/static/**/*.gz
+/priv/static/**/*-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].*
 
 # Ignore digested assets cache.
 /priv/static/cache_manifest.json
@@ -35,3 +37,7 @@ code_tau-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Temporary files
+/tmp
+
+.DS_Store

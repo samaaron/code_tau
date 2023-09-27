@@ -10,6 +10,7 @@ import Config
 # Configures the endpoint
 config :code_tau, CodeTauWeb.Endpoint,
   url: [host: "localhost"],
+
   render_errors: [
     formats: [html: CodeTauWeb.ErrorHTML, json: CodeTauWeb.ErrorJSON],
     layout: false
@@ -28,22 +29,38 @@ config :code_tau, CodeTau.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
-  version: "0.17.11",
+  version: "0.19.3",
   default: [
     args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+      ~w(js/app.js
+      --bundle
+      --target=es2017
+      --outdir=../priv/static/assets
+      --external:/fonts/*
+      --external:/images/*
+      --loader:.ttf=file
+      ),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ],
+  monaco_editor: [
+    args: ~w(
+        vendor/monaco-editor/esm/vs/editor/editor.worker.js
+        --bundle
+        --target=es2017
+        --outdir=../priv/static/assets/monaco-editor
+      ),
+    cd: Path.expand("../assets", __DIR__)
   ]
 
 # Configure tailwind (the version is required)
 config :tailwind,
-  version: "3.3.2",
+  version: "3.3.3",
   default: [
     args: ~w(
       --config=tailwind.config.js
-      --input=css/app.css
-      --output=../priv/static/assets/app.css
+      --input=css/style.css
+      --output=../priv/static/assets/style.css
     ),
     cd: Path.expand("../assets", __DIR__)
   ]

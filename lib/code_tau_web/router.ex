@@ -17,7 +17,7 @@ defmodule CodeTauWeb.Router do
   scope "/", CodeTauWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live("/", MainLive)
   end
 
   # Other scopes may use custom stacks.
