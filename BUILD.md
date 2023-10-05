@@ -1,4 +1,4 @@
-# How to 'Code Tau'
+# How to build 'Code Tau'
 
 This article describes how to get a development version of 'Code Tau' running locally on your machine.
 
